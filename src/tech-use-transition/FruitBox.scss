@@ -1,0 +1,79 @@
+div.tech-use-transition {
+    div.container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div.box {
+        width: 400px;
+        height: 500px;
+        position: relative;
+        padding: 30px;
+        box-shadow: 0 0 15px lightgray;
+        border-radius: 30px;
+    }
+
+    span.title {
+        font-size: 1.2em;
+        margin-top: 0px;
+    }
+
+    div.background {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: -1;
+
+        img.logo {
+            height: 100px;
+            animation: rotate linear 4s infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    div.tab {
+        padding: 10px;
+
+        button {
+            width: 30%;
+            height: 40px;
+            border: none;
+            background-color: lightgrey;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: whitesmoke;
+            }
+
+            &:active {
+                background-color: lightgrey !important;
+            }
+        }
+
+        button.active {
+            background-color: white;
+            font-weight: bold;
+            border-top: 1px solid lightgrey;
+            border-left: 1px solid lightgrey;
+            border-right: 1px solid lightgrey;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+    }
+}
