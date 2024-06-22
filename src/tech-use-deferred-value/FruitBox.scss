@@ -1,4 +1,4 @@
-div.tech-use-transition {
+div.tech-use-deferred-value {
     div.container {
         width: 100vw;
         height: 100vh;
@@ -19,6 +19,21 @@ div.tech-use-transition {
     p.title {
         font-size: 1.2em;
         margin-top: 0px;
+    }
+
+    input.name {
+        width: 250px;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 1.2em;
+        background-color: whitesmoke;
+        border-radius: 99px;
+        border: 1px solid lightgray;
+
+        &:focus {
+            background-color: white;
+        }
     }
 
     div.background {

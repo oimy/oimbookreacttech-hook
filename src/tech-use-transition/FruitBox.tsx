@@ -1,4 +1,4 @@
-import { startTransition, useState } from "react";
+import { useState, useTransition } from "react";
 import { useMount } from "../hooks/use-mount";
 import "./FruitBox.scss";
 import FruitList from "./FruitList";
@@ -14,23 +14,17 @@ export default function FruitBox() {
 
     useMount(() => {
         import("./dataset/fruits.json").then((fruits) => {
-            const sortedFruits = fruits.default.sort((a, b) =>
-                a.name.localeCompare(b.name)
-            );
-            setAToJFruits(
-                sortedFruits.filter((fruit) => /^[a-j]/i.test(fruit.name))
-            );
-            setKToYFruits(
-                sortedFruits.filter((fruit) => /^[k-y]/i.test(fruit.name))
-            );
-            setZToZFruits(
-                sortedFruits.filter((fruit) => /^[z-z]/i.test(fruit.name))
-            );
+            const sortedFruits = fruits.default.sort((a, b) => a.name.localeCompare(b.name));
+            setAToJFruits(sortedFruits.filter((fruit) => /^[a-j]/i.test(fruit.name)));
+            setKToYFruits(sortedFruits.filter((fruit) => /^[k-y]/i.test(fruit.name)));
+            setZToZFruits(sortedFruits.filter((fruit) => /^[z-z]/i.test(fruit.name)));
         });
     });
 
+    const [, startTabTransition] = useTransition();
+
     function handleClickTab(tab: Tab) {
-        startTransition(() => {
+        startTabTransition(() => {
             setTab(tab);
         });
     }
@@ -63,15 +57,9 @@ export default function FruitBox() {
                             Z - Z
                         </button>
                     </div>
-                    {tab === "a-to-j" && (
-                        <FruitList fruits={aToJFruits} slowLevel="none" />
-                    )}
-                    {tab === "k-to-y" && (
-                        <FruitList fruits={kToYFruits} slowLevel="low" />
-                    )}
-                    {tab === "z-to-z" && (
-                        <FruitList fruits={zToZFruits} slowLevel="high" />
-                    )}
+                    {tab === "a-to-j" && <FruitList fruits={aToJFruits} />}
+                    {tab === "k-to-y" && <FruitList fruits={kToYFruits} />}
+                    {tab === "z-to-z" && <FruitList fruits={zToZFruits} slowLevel="high" />}
                 </div>
             </div>
         </div>

@@ -1,14 +1,6 @@
-export default function FruitLine({
-    name,
-    url,
-    delayMillisecond,
-}: {
-    name: string;
-    url: string | null;
-    delayMillisecond: number;
-}) {
+export default function FruitLine({ name, url }: { name: string; url: string | null }) {
     const startTime = performance.now();
-    while (performance.now() - startTime < delayMillisecond) {}
+    while (performance.now() - startTime < 2) {}
 
     return url ? (
         <p>
